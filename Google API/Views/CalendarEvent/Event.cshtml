@@ -1,0 +1,10 @@
+﻿@using Google_API.Models;
+@model Event
+<div>
+    <div style="margin: 20px;">
+        <p>Summary : @Model.Summary</p>
+        <p>Description : @Model.Description</p>
+        <p>Start Date Time : @(DateTime.Parse(Model.Start.DateTime).ToString("dd-MMM-yyyy hh:mm")) (@Model.Start.TimeZone)</p>
+        <p>End Date Time : @(DateTime.Parse(Model.End.DateTime).ToString("dd-MMM-yyyy hh:mm")) (@Model.End.TimeZone)</p>
+    </div>
+</div>

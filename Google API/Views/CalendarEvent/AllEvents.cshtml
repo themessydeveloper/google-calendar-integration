@@ -1,0 +1,31 @@
+﻿@using Google_API.Models;
+@using System.Globalization;
+@model List<Event>
+
+@if (Model.Count != 0)
+{
+    <div>
+        @foreach (Event calendarEvent in Model)
+        {
+        <div style="margin: 30px;" class="row">
+            <a style="cursor: pointer; text-decoration: none;" class="col-sm-4" onclick="location.href = '@Url.Action("Event", "CalendarEvent", new {identifier = calendarEvent.Id})'">
+                <div>
+                    <p>Summary : @calendarEvent.Summary</p>
+                    <p>Description : @calendarEvent.Description</p>
+                    <p>Start Date Time : @(DateTime.Parse(@calendarEvent.Start.DateTime, CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy hh:mm")) (@calendarEvent.Start.TimeZone)</p>
+                    <p>End Date Time : @(DateTime.Parse(@calendarEvent.End.DateTime, CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy hh:mm")) (@calendarEvent.End.TimeZone)</p>
+                </div>
+            </a>
+            <a style="cursor: pointer; text-decoration: none;" onclick="location.href = '@Url.Action("UpdateEvent", "CalendarEvent", new {identifier = calendarEvent.Id})'">Edit</a>
+            <span style="margin-right: 20px; margin-left: 20px;">|</span>
+            <a style="cursor: pointer; text-decoration: none;" onclick="location.href = '@Url.Action("DeleteEvent", "CalendarEvent", new {identifier = calendarEvent.Id})'">Delete</a>
+        </div>
+        }
+    </div>
+}
+else
+{
+    <div style="margin: 30px; font-size: 20px;">
+        No Events Found
+    </div>
+}

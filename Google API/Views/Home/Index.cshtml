@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<button class="btn btn-primary" style="margin-top: 20px;" onclick="location.href = '@Url.Action("OauthRedirect", "Home")'">Sign In</button>
+
+<button class="btn btn-primary" style="margin-top: 20px; margin-left: 10px;" onclick="location.href = '@Url.Action("RefreshToken", "OAuth")'">Refresh Access Token</button>
+
+<button class="btn btn-primary" style="margin-top: 20px; margin-left: 10px;" onclick="location.href = '@Url.Action("RevokeToken", "OAuth")'">Revoke Access Token</button>
+
+
+<div class="row row-no-gutters" style="margin: 40px 10px 20px 10px;">
+    <div class="col-sm-6">
+        @Html.Partial("~/Views/CalendarEvent/CreateEvent.cshtml")
+    </div>
+</div>
+
